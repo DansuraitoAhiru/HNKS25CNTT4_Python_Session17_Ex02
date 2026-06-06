@@ -36,6 +36,12 @@ def display_labels(products):
             print(f"Bỏ qua sản phẩm {id} do giá tiền không hợp lệ")
             continue
 
+        try:
+            rate = float(rate)
+        except ValueError:
+            print(f"Bỏ qua sản phẩm {id} do đánh giá không hợp lệ")
+            continue
+
         product = {
             "id": id,
             "name": name,
