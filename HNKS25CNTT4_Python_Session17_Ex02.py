@@ -3,6 +3,7 @@
 # Python sẽ so sánh tuple từ trái sang phải:
 # So sánh -rating trước, mặc định sort là tăng dần nên thêm - để xếp theo giảm dần
 # Nếu bằng nhau thì so sánh price, để nguyên thì xếp theo giá tăng dần
+# cơ chế cộng dồn (accumulator): lấy kết quả của lần tính trước làm đầu vào cho lần tính tiếp theo
 
 from functools import reduce
 
@@ -81,7 +82,7 @@ def calculate_total(products):
         print("Không có dữ liệu hợp lệ để tính toán")
         return
 
-    total = reduce(lambda x, y: x + y, prices)
+    total = reduce(lambda x, y: x + y, prices)    # x chính là accumulator (giá trị cộng dồn), còn y là phần tử hiện tại trong prices
 
     print("--- TỔNG GIÁ TRỊ KHO ---")
     print(f"Tổng giá trị các mặt hàng hiện tại là: {total:,} VND")
